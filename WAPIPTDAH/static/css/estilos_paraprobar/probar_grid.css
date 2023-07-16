@@ -1,0 +1,121 @@
+.centrado {
+    margin: 0;
+    padding: 0;
+}
+
+.contenedor-form {
+    width: 50%;
+    max-width: 50%;
+    margin: auto;
+    padding: 40px 0;
+    display: grid;
+    grid-template-columns: 4fr;
+}
+
+.formato {
+    display: grid;
+    grid-template-columns: 4fr;
+
+    background-color: #0C2342;
+    color: white;
+    border-color: black;
+}
+
+.formato-opciones {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+}
+
+.card {
+    min-height: 50px;
+    padding: 20px;
+    position: relative;
+    overflow: hidden;
+}
+
+.card .opciones {
+    height: 100%;
+    align-items: left;
+
+    display: flex;
+    /* Establece el contenedor como un contenedor flexible */
+    flex-direction: column;
+    /* Define la dirección de los elementos hijos en columnas */
+    justify-content: space-between;
+    /* Distribuye el espacio disponible verticalmente entre los elementos */
+}
+
+.card .opciones_2 {
+    height: 100%;
+    align-items: end;
+
+    display: flex;
+    /* Establece el contenedor como un contenedor flexible */
+    flex-direction: column;
+    /* Define la dirección de los elementos hijos en columnas */
+    justify-content: space-between;
+    /* Distribuye el espacio disponible verticalmente entre los elementos */
+}
+
+.formato-form {
+    display: grid;
+    grid-template-columns: 4fr;
+
+    background-color: #FFF;
+    color: #333;
+    border-color: #333;
+    border-style: solid;
+    border-width: 1px;
+    /* Ajusta el grosor del borde a 1 píxel */
+}
+
+.formato-form-entrada{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.card .opciones h6 {
+    padding: 0px 15px 15px 15px;
+    padding-left: 0px;
+    font-family: "Pacifico", cursive;
+}
+
+.btn {
+    display: inline-block;
+    border: none;
+    border-radius: 4px;
+    padding: 8px 16px;
+    font-size: 14px;
+    text-align: center;
+    text-decoration: none;
+    background-color: #dc3545;
+    color: #fff;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.btn:hover {
+    background-color: #c82333;
+}
+
+.form-group {
+    margin-bottom: 20px;
+    /* Espacio entre grupos de formulario */
+}
+
+@media (max-width: 576px) {
+
+    /* Estilos específicos para dispositivos con un ancho máximo de 576px */
+    .form-group {
+        margin-bottom: 10px;
+        /* Espacio reducido entre grupos de formulario */
+    }
+}
+
+@media (max-width: 768px) {
+    .btn {
+        font-size: 12px;
+        padding: 6px 12px;
+    }
+}

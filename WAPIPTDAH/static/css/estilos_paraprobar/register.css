@@ -1,0 +1,12 @@
+#bodycolor{
+    background-color: black;
+}
+
+#bodygeneral{
+    width: 60%;
+}
+
+#saveregister{
+    display: flex;
+    justify-content: center;
+}

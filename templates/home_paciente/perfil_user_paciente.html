@@ -1,0 +1,111 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta content="width=device-width, initial-scale=1" name="viewport">
+    <title>
+        Home | Paciente
+    </title>
+    <link href="https://fonts.googleapis.com/css2?family=Oswald&display=swap" rel="stylesheet">
+    <!-- Iconos-->
+    <script crossorigin="anonymous" src="https://kit.fontawesome.com/cb1bb46b82.js"> </script>
+    <!--Estilos personales-->
+    <link rel="stylesheet" href="{% static 'css/estilos_partials/perfil.css' %}" />
+    <!-- INCORPORACIONES PARA LAS ALERTAS Y LOS ESTILOS DE TABLAS-->
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.4.4/dist/sweetalert2.all.min.js"></script>
+    </meta>
+    </meta>
+</head>
+
+<body>
+    <!-- SECCION DEL CABECERA-->
+    {% include 'partials/home_paciente/cabecera_home.html'%}
+    <!-- SECCION DEL CABECERA-->
+
+    <div class="row">
+        <!-- SECCION DEL NAVBAR-->
+        {% include 'partials/home_paciente/sidebar_home.html'%}
+        <!-- SECCION DEL NAVBAR-->
+        <section style="background-color: #D9DBF1;">
+            <!-- SECCION DEL CONTENIDO CENTRAL-->
+            {% block content%}
+            <div class="centrado">
+                <div class="contenedor-perfil">
+                    <div class="contenedor-foto">
+                        <img src="{% static 'img/facebook.png' %}" alt="" />
+                    </div>
+                    <div class="contenedor-username">
+                        <li>
+                            <h6>{{ user_paciente.nombre }}</h6>
+                        </li>
+                    </div>
+                    <div class="contenedor-username">
+                        <li>
+                            <label style="font-size: 0.8rem;">{{ user_paciente.correo_electronico }}</label>
+                        </li>
+                    </div>
+                    <div class="contenedor-opciones">
+                        <div class="card">
+                            <div class="opciones">
+                                <a href="#" title="Compartir" class="boton-opciones">Compartir</a>
+                            </div>
+                        </div>
+                        <div class="card">
+                            <div class="opciones">
+                                <a onclick="return editar_perfil_paciente()" title="Editar perfil"
+                                    class="boton-opciones">Editar</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="contenedor-datos">
+                        <div class="card_datos">
+                            <div class="opciones_datos">
+                                <ul>
+                                    <li>Nombre: {{ user_paciente.nombre }}</li>
+                                    <li>Apellido: {{ user_paciente.apellido }}</li>
+                                    <li>Correo: {{ user_paciente.correo_electronico }}</li>
+                                    <li>Celular: {{ user_paciente.numero_celular }}</li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="card_datos">
+                            <div class="opciones_datos">
+                                <ul>
+                                    <li>Emergencia: {{ user_paciente.contacto_emergencia }}</li>
+                                    <li>Edad:  {{ user_paciente.edad }}</li>
+                                    <li>Usuario: {{ user_paciente.username }}</li>
+                                    <li>Fecha Nacimiento: {{ user_paciente.fecha_nacimiento }}</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="boton">
+                        <a href="#" onclick="return validar_eliminacion_paciente()" title="Eliminar perfil"
+                            class="boton-opciones">Eliminar</a>
+                    </div>
+                </div>
+            </div>
+            {% endblock %}
+            <!-- SECCION DEL CONTENIDO CENTRAL-->
+        </section>
+    </div>
+    <input type="hidden" id="slug" name="slug" value="{{ slug }}">
+    <!-- SECCION FOOTER -->
+    {% include 'partials/footer_home.html'%}
+    <!-- SECCION FOOTER -->
+
+    <!-- Incluye la biblioteca de Bootstrap y otros scripts -->
+    <script src="{% static 'js/controler_user/validate_campos_perfil.js' %}"></script>
+
+</body>
+
+</html>
+<!-- 
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/js/all.min.js"></script>
+    <script crossorigin="anonymous" integrity="sha384-U1DAWAznBHeqEIlVSCgzq+c9gqGAJn5c/t99JyeKa9xxaYpSvHU5awsuZVVFIhvj"
+        src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.bundle.min.js"> </script></script>
+-->

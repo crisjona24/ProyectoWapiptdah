@@ -1,0 +1,102 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta content="width=device-width, initial-scale=1" name="viewport">
+    <title>
+        Home | Usuario Técnico
+    </title>
+    <link href="https://fonts.googleapis.com/css2?family=Oswald&display=swap" rel="stylesheet">
+    <!-- Iconos-->
+    <script crossorigin="anonymous" src="https://kit.fontawesome.com/cb1bb46b82.js"> </script>
+    <!--Estilos personales-->
+    <link rel="stylesheet" href="{% static 'css/estilos_partials/perfil.css' %}" />
+    <!-- INCORPORACIONES PARA LAS ALERTAS Y LOS ESTILOS DE TABLAS-->
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.4.4/dist/sweetalert2.all.min.js"></script>
+</head>
+
+<body>
+    <!-- SECCION DEL CABECERA-->
+    {% include 'partials/home_tecnico/cabecera_home_t.html'%}
+    <!-- SECCION DEL CABECERA-->
+    <div class="row">
+        <!-- SECCION DEL NAVBAR-->
+        {% include 'partials/home_tecnico/sidebar_home_t.html'%}
+        <!-- SECCION DEL NAVBAR-->
+
+        <section style="background-color: #D9DBF1;">
+            <!-- SECCION DEL CONTENIDO CENTRAL-->
+            {% block content%}
+            <div class="centrado">
+                <div class="contenedor-perfil">
+                    <div class="contenedor-foto">
+                        <img src="{% static 'img/facebook.png' %}" alt="" />
+                    </div>
+                    <div class="contenedor-username">
+                        <li>
+                            <h6>{{ user_tecnico.nombre }}</h6>
+                        </li>
+                    </div>
+                    <div class="contenedor-username">
+                        <li>
+                            <label style="font-size: 0.8rem;">{{ user_tecnico.correo_electronico }}</label>
+                        </li>
+                    </div>
+                    <div class="contenedor-opciones">
+                        <div class="card">
+                            <div class="opciones">
+                                <a href="#" title="Compartir" class="boton-opciones">Compartir</a>
+                            </div>
+                        </div>
+                        <div class="card">
+                            <div class="opciones">
+                                <a onclick="return editar_perfil_tecnico()" title="Editar perfil"
+                                    class="boton-opciones">Editar</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="contenedor-datos">
+                        <div class="card_datos">
+                            <div class="opciones_datos">
+                                <ul>
+                                    <li>Nombre: {{ user_tecnico.nombre }}</li>
+                                    <li>Apellido: {{ user_tecnico.apellido }}</li>
+                                    <li>Correo: {{ user_tecnico.correo_electronico }}</li>
+                                    <li>Celular: {{ user_tecnico.numero_celular }}</li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="card_datos">
+                            <div class="opciones_datos">
+                                <ul>
+                                    <li>Area: {{ user_tecnico.area_operacion }}</li>
+                                    <li>DNI:  {{ user_tecnico.identificacion }}</li>
+                                    <li>Usuario: {{ user_tecnico.username }}</li>
+                                    <li>Fecha Nacimiento: {{ user_tecnico.fecha_nacimiento }}</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="boton">
+                        <a onclick="return validar_eliminacion_tecnico()" title="Eliminar perfil"
+                            class="boton-opciones">Eliminar</a>
+                    </div>
+                </div>
+            </div>
+            {% endblock %}
+            <!-- SECCION DEL CONTENIDO CENTRAL-->
+        </section>
+    </div>
+    <input type="hidden" id="slug" name="slug" value="{{ slug }}">
+    <!-- SECCION FOOTER -->
+    {% include 'partials/footer_home.html'%}
+    <!-- SECCION FOOTER -->
+
+    <!-- Incluye la biblioteca de Bootstrap y otros scripts -->
+    <script src="{% static 'js/controler_user/validate_campos_perfil.js' %}"></script>
+
+</body>
+
+</html>

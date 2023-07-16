@@ -1,0 +1,86 @@
+.container {
+    max-width: 600px;
+    /* Establece el ancho máximo del contenedor */
+    margin: 0 auto;
+    /* Centra el contenedor horizontalmente */
+    padding: 20px;
+    /* Espaciado interno del contenedor */
+}
+
+h2 {
+    text-align: center;
+    /* Centra el texto del encabezado h2 */
+}
+
+.textarea {
+    width: 100%;
+    /* Establece el ancho del textarea al 100% del contenedor */
+    max-width: 500px;
+    /* Establece el ancho máximo del textarea */
+    height: 150px;
+    /* Establece la altura del textarea */
+}
+
+form {
+    display: flex;
+    /* Establece el formulario como un contenedor flexible */
+    flex-direction: column;
+    /* Organiza los elementos en columnas dentro del formulario */
+}
+
+.form-group {
+    margin-bottom: 20px;
+    /* Establece el margen inferior para el grupo de formulario */
+}
+
+.barraSup {
+    background-color: #0C2342;
+    /* Establece el color de fondo de la barra superior */
+    color: white;
+    /* Establece el color del texto en la barra superior */
+    border-color: black;
+    /* Establece el color del borde de la barra superior */
+}
+
+.body-style {
+    border-color: black;
+    /* Establece el color del borde del cuerpo del documento */
+}
+
+label {
+    font-weight: bold;
+    /* Establece el peso de la fuente en negrita para las etiquetas */
+}
+
+input[type="text"],
+input[type="email"] {
+    width: 100%;
+    /* Establece el ancho de los campos de entrada de texto al 100% */
+    padding: 10px;
+    /* Establece el espaciado interno de los campos de entrada de texto */
+}
+
+button {
+    background-color: #4CAF50;
+    /* Establece el color de fondo del botón */
+    color: white;
+    /* Establece el color del texto del botón */
+    padding: 10px 20px;
+    /* Espaciado interno del botón (arriba/abajo, izquierda/derecha) */
+    border: none;
+    /* Elimina el borde del botón */
+    cursor: pointer;
+    /* Cambia el cursor al pasar el ratón sobre el botón */
+}
+
+button:hover {
+    background-color: #45a049;
+    /* Establece el color de fondo al pasar el ratón sobre el botón */
+}
+
+@media (max-width: 767px) {
+    textarea {
+        height: 100px;
+        /* Ajusta la altura del textarea para dispositivos móviles */
+    }
+}

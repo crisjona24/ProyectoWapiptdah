@@ -1,0 +1,93 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta content="width=device-width, initial-scale=1" name="viewport">
+    <link href="https://fonts.googleapis.com/css2?family=Oswald&display=swap" rel="stylesheet">
+    <!-- Iconos-->
+    <script crossorigin="anonymous" src="https://kit.fontawesome.com/cb1bb46b82.js"> </script>
+    <!--Estilos personales-->
+    <link rel="stylesheet" href="{% static 'css/estilos_home/sidebar_paciente.css' %}">
+</head>
+
+<body>
+    <aside style="background-color: #fff;">
+        <!-- SECCION DEL NAVBAR-->
+        <nav class="nav">
+            <ul class="list">
+                <li class="list__item">
+                    <div class="list__button">
+                        <img src="{% static 'assets/dashboard.svg' %}" class="list__img">
+                        <a href="{% url 'listado_nivel_TDAH_p' slug=slug %}" class="nav__link">Inicio</a>
+                    </div>
+                </li>
+                <li class="list__item">
+                    <div class="list__button">
+                        <img src="{% static 'assets/user.svg' %}" class="list__img">
+                        <a href="{% url 'profile_paciente' slug=slug %}" class="nav__link">Perfil</a>
+                    </div>
+                </li>
+
+                <li class="list__item list__item--click">
+                    <div class="list__button list__button--click">
+                        <img src="{% static 'assets/docs.svg' %}" class="list__img">
+                        <a class="nav__link">Servicios</a>
+                        <img src="{% static 'assets/arrow.svg' %}" class="list__arrow">
+                    </div>
+
+                    <ul class="list__show">
+                        <li class="list__inside">
+                            <a href="{% url 'listado_curso_p' slug=slug %}"
+                                class="nav__link nav__link--inside">Cursos</a>
+                        </li>
+                    </ul>
+                    
+                </li>
+                <li class="list__item list__item--click">
+                    <div class="list__button list__button--click">
+                        <img src="{% static 'assets/docs.svg' %}" class="list__img">
+                        <a class="nav__link">Fondo</a>
+                        <img src="{% static 'assets/arrow.svg' %}" class="list__arrow">
+                    </div>
+
+                    <ul class="list__show">
+                        <li class="list__inside">
+                            <select id="colorSelect" class="form-select" onchange="cambiarColorFondo()">
+                                <option value="#D9DBF1">Base</option>
+                                <option value="#E8A596">Rojo</option>
+                                <option value="#7F92B2">Azul</option>
+                                <option value="#9DCF8B">Verde</option>
+                                <option value="#FFDF79">Amarillo</option>
+                            </select>
+                            <!-- <a href="#" class="nav__link nav__link--inside">Estoy dentro</a> -->
+                        </li>
+                    </ul>
+                    
+                </li>
+
+                <li class="list__item list__item--click">
+                    <div class="list__button list__button--click">
+                        <img src="{% static 'assets/engranaje.svg' %}" class="list__img">
+                        <a class="nav__link">Opciones</a>
+                        <img src="{% static 'assets/arrow.svg' %}" class="list__arrow">
+                    </div>
+
+                    <ul class="list__show">
+                        <li class="list__inside">
+                            <a href="/" class="nav__link nav__link--inside">Salir</a>
+                        </li>
+                    </ul>
+                </li>
+            </ul>
+        </nav>
+        <!-- SECCION DEL NAVBAR-->
+    </aside>
+
+    <!-- Incluye la biblioteca de Bootstrap y otros scripts -->
+    <script src="{% static 'js/controler_home/home_paciente.js' %}"></script>
+    
+</body>
+
+</html>

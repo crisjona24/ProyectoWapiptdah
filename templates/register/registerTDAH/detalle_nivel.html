@@ -1,0 +1,150 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta content="width=device-width, initial-scale=1" name="viewport">
+    {% if usuario.is_usuario_comun %}
+    <title> Home | Usuario Común </title>
+    {% elif usuario.is_usuario_tecnico %}
+    <title> Home | Usuario Técnico </title>
+    {% else %}
+    <title> Home | Usuario Paciente </title>
+    {% endif %}
+    <link href="https://fonts.googleapis.com/css2?family=Oswald&display=swap" rel="stylesheet">
+    <!-- Iconos-->
+    <script crossorigin="anonymous" src="https://kit.fontawesome.com/cb1bb46b82.js"> </script>
+    <!--Estilos personales-->
+    <link rel="stylesheet" href="{% static 'css/estilos_general/detalle.css' %}" />
+</head>
+
+<body>
+    <!-- SECCION DEL CABECERA-->
+    {% if usuario.is_usuario_comun %}
+    {% include 'partials/home_comun/cabecera_home_c.html' %}
+    {% elif usuario.is_usuario_tecnico %}
+    {% include 'partials/home_tecnico/cabecera_home_t.html' %}
+    {% else %}
+    {% include 'partials/home_paciente/cabecera_home.html' %}
+    {% endif %}
+    <!-- SECCION DEL CABECERA-->
+    <div class="row">
+
+        <!-- SECCION DEL NAVBAR-->
+        {% if usuario.is_usuario_comun %}
+        {% include 'partials/home_comun/sidebar_home_c.html' %}
+        {% elif usuario.is_usuario_tecnico %}
+        {% include 'partials/home_tecnico/sidebar_home_t.html' %}
+        {% else %}
+        {% include 'partials/home_paciente/sidebar_home.html' %}
+        {% endif %}
+
+        <!-- SECCION DEL NAVBAR-->
+
+        <section style="background-color: #D9DBF1;">
+            <div>
+                {% if usuario.is_usuario_comun %}
+                <span class="span">{{usuario.nombre}} esta en modo: Común</span>
+                {% elif usuario.is_usuario_tecnico %}
+                <span class="span">{{usuario.nombre}} esta en modo: Técnico</span>
+                {% else %}
+                <span class="span">{{usuario.nombre}} esta en modo: Paciente</span>
+                {% endif %}
+            </div>
+            <!-- SECCION DEL CONTENIDO CENTRAL-->
+            {% block content %}
+            {% if nivel %}
+            <br>
+            <div class="cen">
+                <div class="cards">
+                    <div class="card-probando">
+                        <div class="content-probando">
+                            <div class="superior-probando">
+                                <h2 class="titulo-probando">
+                                    Nivel: {{ nivel.nombre_nivel }}
+                                </h2>
+                            </div>
+                            <div class="contenido-probando">
+                                <div class="tarjeta">
+                                    <div class="cabecera">
+                                        <h3>
+                                            Descripción
+                                        </h3>
+                                    </div>
+                                    <div class="cuerpo">
+                                        <p>
+                                            {{ nivel.descripcion_grado }}
+                                        </p>
+                                    </div>
+                                </div>
+                                <div class="tarjeta">
+                                    <div class="cabecera">
+                                        <h3>
+                                            Dificultad
+                                        </h3>
+                                    </div>
+                                    <div class="cuerpo">
+                                        <p>
+                                            {{ nivel.grado_dificultad }}
+                                        </p>
+                                    </div>
+                                </div>
+                                <div class="tarjeta">
+                                    <div class="cabecera">
+                                        <h3>
+                                            Categorías
+                                        </h3>
+                                    </div>
+                                    <div class="cuerpo">
+                                        <p>
+                                            {{ nivel.numero_categorias }}
+                                        </p>
+                                    </div>
+                                </div>
+                                <div class="tarjeta">
+                                    <div class="cabecera">
+                                        <h3>
+                                            Fecha de registro
+                                        </h3>
+                                    </div>
+                                    <div class="cuerpo">
+                                        <p>
+                                            {{ nivel.fecha_registro_grado }}
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="footer-probando">
+                            {% if usuario.is_usuario_comun %}
+                            <a href="{% url 'listado_categoria_c' slug=slug slug2=slug2 %}" class="btn-pri">Atras</a>
+                            {% elif usuario.is_usuario_tecnico %}
+                            <a href="{% url 'listado_categoria_t' slug=slug2 %}" class="btn-pri">Atras</a>
+                            {% else %}
+                            <a href="{% url 'listado_categoria_p' slug=slug slug2=slug2 %}" class="btn-pri">Atras</a>
+                            {% endif %}
+                        </div>
+                    </div>
+                </div>
+            </div>
+            {% else %}
+            <!-- Mostrar el mensaje de que no existen valores -->
+            <div>
+                <p class="parrafo">
+                    No hay información disponible</p>
+            </div>
+            {% endif %}
+            {% endblock %}
+            <!-- SECCION DEL CONTENIDO CENTRAL-->
+        </section>
+    </div>
+    <!-- SECCION FOOTER -->
+    {% include 'partials/footer_home.html'%}
+    <!-- SECCION FOOTER -->
+
+    <!-- Incluye la biblioteca de Bootstrap y otros scripts -->
+
+</body>
+
+</html>

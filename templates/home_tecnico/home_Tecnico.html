@@ -1,0 +1,43 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta content="width=device-width, initial-scale=1" name="viewport">
+    <title>
+        Home | Usuario Técnico
+    </title>
+    <link href="https://fonts.googleapis.com/css2?family=Oswald&display=swap" rel="stylesheet">
+    <!-- Iconos-->
+    <script crossorigin="anonymous" src="https://kit.fontawesome.com/cb1bb46b82.js"> </script>
+    <!--Estilos personales-->
+</head>
+
+<body>
+    <!-- SECCION DEL CABECERA-->
+    {% include 'partials/home_tecnico/cabecera_home_t.html'%}
+    <!-- SECCION DEL CABECERA-->
+    <div class="row">
+        <!-- SECCION DEL NAVBAR-->
+        {% include 'partials/home_tecnico/sidebar_home_t.html'%}
+        <!-- SECCION DEL NAVBAR-->
+
+        <section style="background-color: #D9DBF1;">
+            <!-- SECCION DEL CONTENIDO CENTRAL-->
+            {% block content%}
+
+            {% endblock %}
+            <!-- SECCION DEL CONTENIDO CENTRAL-->
+        </section>
+    </div>
+    <!-- SECCION FOOTER -->
+    {% include 'partials/footer_home.html'%}
+    <!-- SECCION FOOTER -->
+
+    <!-- Incluye la biblioteca de Bootstrap y otros scripts -->
+    <script src="{% static 'js/controler_home/home_paciente.js' %}"></script>
+
+</body>
+
+</html>

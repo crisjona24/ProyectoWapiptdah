@@ -1,0 +1,36 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta content="width=device-width, initial-scale=1" name="viewport">
+    <link href="https://fonts.googleapis.com/css2?family=Oswald&display=swap" rel="stylesheet">
+    <!--Estilos personales-->
+    <link rel="stylesheet" href="{% static 'css/estilos_home/bodyPaciente.css' %}">
+</head>
+
+<body>
+    <!-- SECCION DEL CABECERA-->
+    <header class="header !important">
+        <div class="left-section !important">
+            <h1 class="title_header !important">
+                WAPIPTDAH
+            </h1>
+            <h5 class="subtitle_header !important">
+                Ayudamos a nuestros niños
+            </h5>
+        </div>
+        <div class="right-section !important">
+            <ul class="menu !important">
+                <li><a href="{% url 'ventanaPrincipalTecnico' %}">Inicio</a></li>
+                <li><a href="#">Conócenos</a></li>
+                <li><a href="{% url 'contactanos' %}">Contacto</a></li>
+            </ul>
+        </div>
+    </header>
+    <!-- SECCION DEL CABECERA-->
+
+</body>
+
+</html>

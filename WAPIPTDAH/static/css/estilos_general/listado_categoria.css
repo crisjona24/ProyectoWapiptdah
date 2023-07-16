@@ -1,0 +1,136 @@
+.centrado {
+    margin: 0;
+    padding: 0;
+}
+
+.centrado_categoria {
+    margin: 0;
+    padding: 10px;
+    height: 10%;
+    background-color: #D9DBF1;
+    border-radius: 10px;
+
+    display: grid;
+    grid-template-columns: repeat(1, 1fr);
+    justify-content: space-between;
+}
+
+.contenido-categoria{
+    display: grid;
+    grid-template-columns: 4fr;
+    
+    width: 80%;
+    margin: auto;
+    padding: 40px 0;
+    border-radius: 10px;
+    border: 2px solid #333;
+    background-color: #fff;
+}
+
+.contenido-categoria-opciones{
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+}
+
+.opcione_1{
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+}
+
+.opcion_2{
+    display: flex;
+    flex-direction: row;
+    justify-content: end;
+}
+
+.card {
+    min-height: 50px;
+    padding: 10px;
+    position: relative;
+    overflow: hidden;
+}
+
+.card .opciones {
+    height: 100%;
+    align-items: left;
+
+    display: flex;
+    /* Establece el contenedor como un contenedor flexible */
+    flex-direction: column;
+    /* Define la dirección de los elementos hijos en columnas */
+    justify-content: space-between;
+    /* Distribuye el espacio disponible verticalmente entre los elementos */
+}
+
+.card .opciones_2 {
+    height: 100%;
+    align-items: end;
+    padding: 0px;
+
+    display: flex;
+    /* Establece el contenedor como un contenedor flexible */
+    flex-direction: column;
+    /* Define la dirección de los elementos hijos en columnas */
+    justify-content: space-between;
+    /* Distribuye el espacio disponible verticalmente entre los elementos */
+}
+
+.btn {
+    display: inline-block;
+    border: none;
+    border-radius: 4px;
+    padding: 8px 16px;
+    font-size: 14px;
+    text-align: center;
+    text-decoration: none;
+    background-color: #dc3545;
+    color: #fff;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.btn:hover {
+    background-color: #c82333;
+}
+
+.btn-pri {
+    display: inline-block;
+    border: none;
+    border-radius: 4px;
+    padding: 8px 16px;
+    font-size: 14px;
+    text-align: center;
+    text-decoration: none;
+    background-color: rgb(2, 70, 148);
+    color: #fff;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.btn-pri:hover {
+    background-color: rgb(2, 70, 148);
+}
+
+.contenido{
+    display: grid;
+    grid-template-columns: 4fr;
+}
+
+.contenido-boton{
+    display: flex;
+    flex-direction: row;
+    justify-content: start;
+}
+
+.card .opciones h3 {
+    padding-top: 10px;
+    font-size: 1rem;
+    font-style: normal;
+    font-family: 'Roboto', sans-serif;
+}
+
+.botones{
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+}

@@ -1,0 +1,133 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta content="width=device-width, initial-scale=1" name="viewport">
+    <title>
+        Home | Usuario Común
+    </title>
+    <link href="https://fonts.googleapis.com/css2?family=Oswald&display=swap" rel="stylesheet">
+    <!-- Iconos-->
+    <script crossorigin="anonymous" src="https://kit.fontawesome.com/cb1bb46b82.js"> </script>
+    <!--Estilos personales-->
+    <link rel="stylesheet" href="{% static 'css/estilos_general/listado_peticion_valido.css' %}">
+</head>
+
+<body>
+    <!-- SECCION DEL CABECERA-->
+    {% include 'partials/home_comun/cabecera_home_c.html'%}
+    <!-- SECCION DEL CABECERA-->
+    <div class="row">
+        <!-- SECCION DEL NAVBAR-->
+        {% include 'partials/home_comun/sidebar_home_c.html'%}
+        <!-- SECCION DEL NAVBAR-->
+        
+        <section style="background-color: #D9DBF1;">
+            <div>
+                <span class="span">{{usuario}} esta en modo: Común</span>
+            </div>
+            {% block content%}
+            <!-- SECCION DEL CONTENIDO CENTRAL-->
+            <div class="contenido-peticion-opciones">
+                <div class="opcion_1">
+                    <div class="card">
+                        <div class="opciones">
+                            <h3>Peticiones creados</h3>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            {% if peticion %}
+            {% for listaPeticion in peticion %}
+            <br>
+            <div class="contenedor-listado">
+                <div class="contenedor-nombre">
+                    <li style="list-style: none;">
+                        <h6>Petición</h6>
+                    </li>
+                </div>
+                <div class="contenedor">
+                    <div class="contenedor-datos">
+                        <div class="card">
+                            <div class="textos">
+                                <img src="{% static 'img/icon.png' %}" style="width: 70px; height: 100px; margin-left: 20px;">
+                            </div>
+                        </div>
+                        <div class="card">
+                            <div class="textos">
+                                <li>
+                                    <h3
+                                        style="font-size: 1rem; font-weight: bold; margin: 0; font-style: normal; font-family: 'Pacifico', cursive; color: #333; text-align: center;">
+                                        Motivo
+                                    </h3>
+                                </li>
+                                <li
+                                    style=" font-size: 1.2rem; font-style: normal; font-family: 'Times New Roman', Times, serif; text-align: center; ">
+                                    {{listaPeticion.motivo_peticion}}</li>
+                            </div>
+                        </div>
+                        <div class="card">
+                            <div class="textos">
+                                <li>
+                                    <h3
+                                        style="font-size: 1rem; font-weight: bold; margin: 0; font-style: normal; font-family: 'Pacifico', cursive; color: #333; text-align: center;">
+                                        Tipo
+                                    </h3>
+                                </li>
+                                <li
+                                    style=" font-size: 1.2rem; font-style: normal; font-family: 'Times New Roman', Times, serif; text-align: center; ">
+                                    {{listaPeticion.tipo_peticion}}</li>
+                            </div>
+                        </div>
+                        <div class="card">
+                            <div class="textos">
+                                <li>
+                                    <h3
+                                        style="font-size: 1rem; font-weight: bold; margin: 0; font-style: normal; font-family: 'Pacifico', cursive; color: #333; text-align: center;">
+                                        Registro
+                                    </h3>
+                                </li>
+                                <li
+                                    style=" font-size: 1.2rem; font-style: normal; font-family: 'Times New Roman', Times, serif; text-align: center; ">
+                                    {{listaPeticion.fecha_registro_peticion}}</li>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="contenedor-opciones">
+                        <ul>
+                            <li>
+                                <h3
+                                    style="font-size: 1rem; font-weight: bold; margin: 0; font-style: normal; font-family: 'Pacifico', cursive; color: #333; text-align: center;">
+                                    Opciones
+                                </h3>
+                            </li>
+                            <li><a href="{% url 'editar_peticion' slug=listaPeticion.slug_peticion %}" class="btn-pri" title="Editar petición"><i class="fa-solid fa-pencil"></i></a></li>
+                            <li><a href="{% url 'eliminar_peticion_d' slug=listaPeticion.slug_peticion %}" class="btn-pri" title="Eliminar petición"><i class="fa-solid fa-trash-can"></i></a></li>
+                            <li><a href="{% url 'detalle_de_peticion' slug=slug slug2=listaPeticion.slug_peticion %}" class="btn-pri" title="Ver detalle"><i class="fa-solid fa-eye"></i></a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+            {% else %}
+            <!-- Mostrar el mensaje de que no existen valores -->
+            <div style="padding: 0; margin: 0;">
+                <p style="font-size: 1rem; font-weight: bold; margin: 0; font-style: normal; 
+                font-family: 'Pacifico', cursive; color: #333; text-align: center;">
+                    No hay peticiones !!! Regrese al inicio</p>
+            </div>
+            {% endif %}
+            {% endblock %}
+        </section>
+    </div>
+    <!-- SECCION FOOTER -->
+    {% include 'partials/footer_home.html'%}
+    <!-- SECCION FOOTER -->
+
+    <!-- Incluye la biblioteca de Bootstrap y otros scripts -->
+
+</body>
+
+</html>

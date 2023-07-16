@@ -1,0 +1,90 @@
+{% load static %} {% include 'partials/superiorRegister.html'%}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="stylesheet" href="{% static 'css/estilos_register/nuevo.css' %}" />
+</head>
+
+{% block content %}
+<body>
+    <div class="container">
+        <div class="container barraSup row">
+            <div class="card-body col-md-7">
+                <h4>Registro de cuenta</h4>
+            </div>
+            <div class="card-body col-md-1">
+                <a href="#" class="btn btn-danger">Cancelar</a>
+            </div>
+        </div>
+        <div class="container card card-body" style="border-color: black;">
+            {% if error %}
+                <span id="error-span">{{ error }}</span>
+            {% endif %}        
+            <form action="{% url 'guardarcuenta' %}" method="POST">
+                {% csrf_token %}
+                <!-- Campos del formulario -->
+                <div class="form-group">
+                    <label for="nombre">Nombre:</label>
+                    <input type="text" id="nombre" name="nombre" placeholder="Ingresa el nombre**" autofocus/>
+                </div>
+                <div class="form-group">
+                    <label for="apellido">Apellido:</label>
+                    <input type="text" id="apellido" name="apellido" placeholder="Ingresa el apellido**" />
+                </div>
+                <div class="form-group">
+                    <label for="email">Correo electrónico:</label>
+                    <input onclick="info()" type="email" id="email" name="email" placeholder="Ingresa el correo**"/>
+                </div>
+                <div class="form-group">
+                    <label for="celular">Celular:</label>
+                    <input type="text" id="celular" name="celular" maxlength="10" placeholder="Ingresa tu celular**"onkeypress="return soloNumeros(event)" />
+                </div>
+                <div class="form-group">
+                    <label for="direccion">Dirección:</label>
+                    <input type="text" id="direccion" name="direccion" placeholder="Ingresa tu dirección**"/>
+                </div>
+                <div class="form-group">
+                    <label for="username">Usuario:</label>
+                    <input type="text" id="username" name="username" placeholder="Crea un nuevo usuario**"/>
+                </div>
+                <div class="form-group">
+                    <label for="password">Clave:</label>
+                    <input type="password" id="password" name="password" placeholder="Crea un nueva clave**"/>
+                </div>
+                <div class="form-group">
+                    <label for="password-confirm">Confirma clave:</label>
+                    <input type="password" id="password-confirm" name="password-confirm" placeholder="Confirma la clave**"/>
+                </div>
+                <div class="form-group">
+                    <label for="fecha">Fecha de Nacimiento:</label>
+                    <input type="date" id="fecha" name="fecha" />
+                </div>
+                <!-- Otros campos del formulario -->
+                <button onclick=" return enviar()" type="submit">Enviar</button>
+            </form>
+        </div>
+    </div>
+    <!-- INCORPORACIONES PARA LAS ALERTAS Y LOS ESTILOS DE TABLAS-->
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.4.4/dist/sweetalert2.all.min.js"></script>
+    <script>
+        function info() {
+            Swal.fire({
+                title: 'Atencion!',
+                text: "Ingresa un correo válido",
+                icon: 'info',
+                confirmButtonColor: '#3085d6',
+                confirmButtonText: 'Lo entiendo!'
+            });
+        };
+    </script>
+    <script src="{% static 'js/controlerCampusRegister/validateprueba2.js' %}"></script>
+</body>
+{% endblock content %}
+{% include 'partials/parteFinal.html'%}
+
+</html>

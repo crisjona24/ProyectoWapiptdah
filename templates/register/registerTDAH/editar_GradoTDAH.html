@@ -1,0 +1,66 @@
+{% load static %} {% include 'partials/home_tecnico/superiorRegister_tecnico.html'%}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="{% static 'css/estilos_register/nuevo.css' %}" />
+    <!-- INCORPORACIONES PARA LAS ALERTAS Y LOS ESTILOS DE TABLAS-->
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.4.4/dist/sweetalert2.all.min.js"></script>
+    <title>Edición | Nivel TDAH</title>
+</head>
+
+{% block content %}
+
+<body>
+    <div class="container">
+        <div class="container barraSup row">
+            <div class="card-body col-md-7">
+                <h4>Actualizar datos de nivel TDAH</h4>
+            </div>
+            <div class="card-body col-md-1">
+                <a href="{% url 'listado_nivel_TDAH_t' slug=slug %}" class="btn btn-danger">Cancelar</a>
+            </div>
+        </div>
+        <div class="container card card-body" style="border-color: black;">
+            <h6>Ingrese los datos solicitados</h6>
+            {% if error %}
+            <span id="error-span">{{ error }}</span>
+            {% endif %}
+            <form action="{% url 'editar_GradoTDAH' slug=slug %}" method="POST">
+                {% csrf_token %}
+                <!-- Campos del formulario -->
+                <div class="form-group">
+                    <label for="nombre">Nombre de nivel:</label>
+                    <input type="text" id="nombre" name="nombre" placeholder="Ingresa el nombre**" value="{{ grado.nombre_nivel }}" autofocus />
+                </div>
+                <div class="form-group">
+                    <label for="descripcion">Descripción:</label>
+                    <input onclick="info()" type="text" id="descripcion" name="descripcion" placeholder="Ingresa una corta descripción*" value="{{ grado.descripcion_grado }}"/>
+                </div>
+                <div class="form-group">
+                    <label for="numcat">Número de categorías:</label>
+                    <input type="number" id="numcat" name="numcat" placeholder="Número de categorías**" value="{{ grado.numero_categorias }}"/>
+                </div>
+                <div class="form-group">
+                    <label for="grado">Grado de contenido:</label>
+                    <select id="grado" name="grado">
+                        <option value="none" {% if grado.grado_dificultad == 'none' %}selected{% endif %} >None</option>
+                        <option value="Bajo"  {% if grado.grado_dificultad == 'Bajo' %}selected{% endif %} >Bajo</option>
+                        <option value="Medio" {% if grado.grado_dificultad == 'Medio' %}selected{% endif %} >Medio</option>
+                        <option value="Alto" {% if grado.grado_dificultad == 'Alto' %}selected{% endif %} >Alto</option>
+                    </select>
+                </div>
+                <!-- Otros campos del formulario -->
+                <button onclick=" return enviar()" type="submit">Enviar</button>
+            </form>
+        </div>
+    </div>
+    <script src="{% static 'js/controlerCampusRegister/validar_campos_nivelTDAH.js' %}"></script>
+
+</body>
+{% endblock content %}
+
+{% include 'partials/parteFinal.html'%}

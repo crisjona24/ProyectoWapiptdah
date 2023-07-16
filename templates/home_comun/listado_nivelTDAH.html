@@ -1,0 +1,193 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta content="width=device-width, initial-scale=1" name="viewport">
+    <title>
+        Home | Usuario Común
+    </title>
+    <link href="https://fonts.googleapis.com/css2?family=Oswald&display=swap" rel="stylesheet">
+    <!-- Iconos-->
+    <script crossorigin="anonymous" src="https://kit.fontawesome.com/cb1bb46b82.js"> </script>
+    <!--Estilos personales-->
+    <link rel="stylesheet" href="{% static 'css/estilos_general/listado_nivel_valido.css' %}">    
+
+</head>
+
+<body>
+    <!-- SECCION DEL CABECERA-->
+    {% include 'partials/home_comun/cabecera_home_c.html'%}
+    <!-- SECCION DEL CABECERA-->
+
+    <div class="row">
+
+        <!-- SECCION DEL NAVBAR-->
+        {% include 'partials/home_comun/sidebar_home_c.html'%}
+        <!-- SECCION DEL NAVBAR-->
+
+        <section style="background-color: #D9DBF1;">
+            {% block content%}
+            <div>
+                <span class="span">{{usuario}} esta en modo: Común</span>
+            </div>
+            <!-- SECCION DEL CONTENIDO CENTRAL-->
+            {% if nivelTDAH %}
+            {% for listaNivel in nivelTDAH %}
+            <br>
+            <div class="contenedor-listado">
+                <div class="contenedor-nombre">
+                    <li style="list-style: none;">
+                        <h6>Grado TDAH</h6>
+                    </li>
+                </div>
+                <div class="contenedor">
+                    <div class="contenedor-datos">
+                        <div class="card">
+                            <div class="textos">
+                                <img src="{% static 'img/icon.png' %}" style="width: 70px; height: 100px; margin-top: 25px; margin-left: 20px;">
+                            </div>
+                        </div>
+                        <div class="card">
+                            <div class="textos">
+                                <li>
+                                    <h3
+                                        style="font-size: 1rem; font-weight: bold; margin: 0; font-style: normal; font-family: 'Pacifico', cursive; color: #333; text-align: center;">
+                                        Nombre
+                                    </h3>
+                                </li>
+                                <li
+                                    style=" font-size: 1.2rem; font-style: normal; font-family: 'Times New Roman', Times, serif; text-align: center; ">
+                                    {{listaNivel.nombre_nivel}}</li>
+                            </div>
+                        </div>
+                        <div class="card">
+                            <div class="textos">
+                                <li>
+                                    <h3
+                                        style="font-size: 1rem; font-weight: bold; margin: 0; font-style: normal; font-family: 'Pacifico', cursive; color: #333; text-align: center;">
+                                        Categorias
+                                    </h3>
+                                </li>
+                                <li
+                                    style=" font-size: 1.2rem; font-style: normal; font-family: 'Times New Roman', Times, serif; text-align: center; ">
+                                    {{listaNivel.numero_categorias}}</li>
+                            </div>
+                        </div>
+                        <div class="card">
+                            <div class="textos">
+                                <li>
+                                    <h3
+                                        style="font-size: 1rem; font-weight: bold; margin: 0; font-style: normal; font-family: 'Pacifico', cursive; color: #333; text-align: center;">
+                                        Dificultad
+                                    </h3>
+                                </li>
+                                <li
+                                    style=" font-size: 1.2rem; font-style: normal; font-family: 'Times New Roman', Times, serif; text-align: center; ">
+                                    {{listaNivel.grado_dificultad}}</li>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="contenedor-opciones">
+                        <ul>
+                            <li>
+                                <h3
+                                    style="font-size: 1rem; font-weight: bold; margin: 0; font-style: normal; font-family: 'Pacifico', cursive; color: #333; text-align: center;">
+                                    Opciones
+                                </h3>
+                            </li>
+                            <li><a href="#" class="btn-pri" title="Editar nivel"><i
+                                        class="fa-solid fa-pencil"></i></a></li>
+                            <li><a class="btn-pri" title="Eliminar nivel"><i
+                                        class="fa-solid fa-trash-can"></i></a>
+                            </li>
+                            <li><a href="{% url 'listado_categoria_c' slug=slug slug2=listaNivel.slug_grado %}" class="btn-pri"
+                                    title="Ver detalles"><i class="fa-solid fa-eye"></i></a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+            {% else %}
+            <!-- Mostrar el mensaje de que no existen valores -->
+            <div style="padding: 0; margin: 0;">
+                <p style="font-size: 1rem; font-weight: bold; margin: 0; font-style: normal; 
+                font-family: 'Pacifico', cursive; color: #333; text-align: center;">
+                    No hay valores disponibles</p>
+            </div>
+            {% endif %}
+
+            {% for listaReporte in reporte %}
+            {% if forloop.first %}
+            <br>
+            <div class="contenedor-listado">
+                <div class="contenedor-nombre-2">
+                    <li>
+                        <h6>Reportes</h6>
+                    </li>
+                </div>
+                <div class="contenedor-reporte">
+                    <div class="contenedor-datos-reporte">
+                        <div class="card">
+                            <div class="textos">
+                                <img src="{% static 'img/icon.png' %}" style="width: 100px; height: 100px;">
+                            </div>
+                        </div>
+                        <div class="card">
+                            <div class="textos">
+                                <li>
+                                    <h3
+                                        style="font-size: 1rem; font-weight: bold; margin: 0; font-style: normal; font-family: 'Pacifico', cursive; color: #333; text-align: center;">
+                                        Titulo
+                                    </h3>
+                                </li>
+                                <li
+                                    style=" font-size: 1.2rem; font-style: normal; font-family: 'Times New Roman', Times, serif; text-align: center; ">
+                                    {{listaReporte.titulo}}</li>
+                            </div>
+                        </div>
+                        <div class="card">
+                            <div class="textos">
+                                <li>
+                                    <h3
+                                        style="font-size: 1rem; font-weight: bold; margin: 0; font-style: normal; font-family: 'Pacifico', cursive; color: #333; text-align: center;">
+                                        Fecha reporte
+                                    </h3>
+                                </li>
+                                <li
+                                    style=" font-size: 1.2rem; font-style: normal; font-family: 'Times New Roman', Times, serif; text-align: center; ">
+                                    {{listaReporte.fecha_registro_reporte}}</li>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="contenedor-opciones">
+                        <li>
+                            <h3
+                                style="font-size: 1rem; font-weight: bold; margin: 0; font-style: normal; font-family: 'Pacifico', cursive; color: #333; text-align: center;">
+                                Opciones
+                            </h3>
+                        </li>
+                        <li><a class="btn-pri" title="Ver detalles"><i class="fa-solid fa-eye"></i></a>
+                        </li>
+                    </div>
+                </div>
+            </div>
+            {% endif %}
+            {% endfor %}
+            <!-- SECCION DEL CONTENIDO CENTRAL CAJA DE REPORTE-->
+
+            <!-- SECCION DEL CONTENIDO CENTRAL-->
+            {% endblock %}
+        </section>
+    </div>
+    <!-- SECCION FOOTER -->
+    {% include 'partials/footer_home.html'%}
+    <!-- SECCION FOOTER -->
+
+    <!-- Incluye la biblioteca de Bootstrap y otros scripts -->
+    <script src="{% static 'js/controler_home/home_paciente.js' %}"></script>
+
+</body>
+
+</html>

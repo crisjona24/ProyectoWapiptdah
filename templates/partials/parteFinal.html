@@ -1,0 +1,46 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <style>
+    body {
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
+      margin: 0;
+    }
+
+    footer {
+      background-color: #0C2342;
+      color: white;
+      padding: 10px;
+      text-align: center;
+      margin-top: auto;
+    }
+
+    footer img {
+      width: 30px;
+      height: 30px;
+      margin: 5px;
+    }
+
+    @media (max-width: 480px) {
+      footer img {
+        width: 20px;
+        height: 20px;
+        margin: 15px 15px 15px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <footer class="footer">
+    &copy; 2023 WAPIPTDAH, Todos los Derechos Reservados
+    <img src="{% static 'img/whatsapp.png' %}" alt="WhatsApp">
+    <img src="{% static 'img/gmail.png' %}" alt="Gmail">
+  </footer>
+</body>
+</html>

@@ -1,0 +1,118 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400&display=swap');
+
+* {
+    box-sizing: border-box;
+}
+
+html {
+    height: -webkit-fill-available;
+}
+
+body {
+    height: 100%;
+    /*Se establece el tamaño en ancho del cuerpo*/
+    font-family: Arial, Helvetica, sans-serif;
+    margin: 0;
+    padding: 0;
+    min-height: 100vh;
+    /*Tamaño minimo que ocupa el cuerpo*/
+    min-height: -webkit-fill-available;
+}
+
+/*Cabecera*/
+
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 50px;
+    background-color: #0C2342;
+}
+
+.left-section {
+    flex: 1;
+}
+
+.right-section {
+    flex: 5;
+    text-align: right;
+}
+
+.menu {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+}
+
+.menu li {
+    display: inline-block;
+    margin-right: 10px;
+}
+
+.menu li a {
+    text-decoration: none;
+    font-family: 'Poppins', sans-serif;
+    color: white;
+}
+
+@media (max-width: 768px) {
+    .header {
+        flex-wrap: wrap;
+    }
+
+    .left-section,
+    .right-section {
+        flex-basis: 100%;
+        text-align: center;
+    }
+
+    .menu li {
+        display: block;
+        margin: 5px 0;
+    }
+}
+
+.title_header {
+    text-align: center;
+    color: white;
+}
+
+.subtitle_header {
+    text-align: center;
+    color: white;
+    font-style: italic;
+    font-family: 'Times New Roman', serif;
+}
+
+/*Cabecera*/
+
+.row {
+    /* Establece el contenedor de fila como un contenedor flexible */
+    display: flex;
+    /* Permite que los elementos se envuelvan en varias líneas si no caben en una sola */
+    flex-wrap: wrap;
+    /* Establece una altura mínima del 100% */
+    min-height: 100%;
+}
+
+/* Establece el tamaño flexible y el espaciado interno del aside */
+aside {
+    flex: 30px;
+    padding: 20px;
+}
+
+/* Establece el tamaño flexible y el espaciado interno de la sección */
+section {
+    flex: 70%;
+    padding: 20px;
+}
+
+/* Aplica estilos adicionales cuando la pantalla tiene un ancho máximo de 700px */
+@media screen and (max-width: 700px) {
+
+    /* Cambia la dirección del contenedor de navegación y la fila a columna */
+    .nav,
+    .row {
+        flex-direction: column;
+    }
+}

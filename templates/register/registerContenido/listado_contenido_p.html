@@ -1,0 +1,151 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta content="width=device-width, initial-scale=1" name="viewport">
+    <title>
+        Home | Paciente
+    </title>
+    <link href="https://fonts.googleapis.com/css2?family=Oswald&display=swap" rel="stylesheet">
+    <!-- Iconos-->
+    <script crossorigin="anonymous" src="https://kit.fontawesome.com/cb1bb46b82.js"> </script>
+    <!--Estilos personales-->
+    <link rel="stylesheet" href="{% static 'css/estilos_general/listado_contenido_valido.css' %}" />
+    <link rel="stylesheet" href="{% static 'css/estilos_general/listado_nivelP_valido.css' %}">
+</head>
+
+<body>
+    <!-- SECCION DEL CABECERA-->
+    {% include 'partials/home_paciente/cabecera_home.html'%}
+    <!-- SECCION DEL CABECERA-->
+    <div class="row">
+
+        <!-- SECCION DEL NAVBAR-->
+        {% include 'partials/home_paciente/sidebar_home.html'%}
+        <!-- SECCION DEL NAVBAR-->
+
+        <section style="background-color: #D9DBF1;">
+            <div class="centrado">
+                <form action="#" method="GET">
+                    <label for="search-input">Código de sala:</label>
+                    <input type="text" id="search-input" name="q" placeholder="Ingresa tu código de sala"
+                        onkeypress="return soloNumeros(event)" />
+                    <button type="submit">Entrar</button>
+                </form>
+            </div>
+            <!-- SECCION DEL CONTENIDO CENTRAL-->
+            {% block content %}
+            <div>
+                <span class="span">{{usuario}} esta en modo: Paciente</span>
+            </div>
+            {% if contenido %}
+            <br>
+            <div class="contenido-categoria">
+                {% for listaContenido in contenido %}
+                <div class="contenido">
+                    <br>
+                    <div class="contenedor-listado">
+                        <div class="contenedor-nombre">
+                            <li style="list-style: none;">
+                                <h6>Categoría:: {{ob_categoria}}</h6>
+                            </li>
+                        </div>
+                        <div class="contenedor">
+                            <div class="contenedor-datos">
+                                <div class="card">
+                                    <div class="textos">
+                                        <img src="{% static 'img/icon.png' %}" style="width: 70px; height: 100px; margin-left: 20px;">
+                                    </div>
+                                </div>
+                                <div class="card">
+                                    <div class="textos">
+                                        <li>
+                                            <h3
+                                                style="font-size: 1rem; font-weight: bold; margin: 0; font-style: normal; font-family: 'Pacifico', cursive; color: #333; text-align: center;">
+                                                Nombre
+                                            </h3>
+                                        </li>
+                                        <li
+                                            style=" font-size: 1.2rem; font-style: normal; font-family: 'Times New Roman', Times, serif; text-align: center; ">
+                                            {{listaContenido.nombre}}</li>
+                                    </div>
+                                </div>
+                                <div class="card">
+                                    <div class="textos">
+                                        <li>
+                                            <h3
+                                                style="font-size: 1rem; font-weight: bold; margin: 0; font-style: normal; font-family: 'Pacifico', cursive; color: #333; text-align: center;">
+                                                Identificador
+                                            </h3>
+                                        </li>
+                                        <li
+                                            style=" font-size: 1.2rem; font-style: normal; font-family: 'Times New Roman', Times, serif; text-align: center; ">
+                                            {{listaContenido.identificador_contenido}}</li>
+                                    </div>
+                                </div>
+                                <div class="card">
+                                    <div class="textos">
+                                        <li>
+                                            <h3
+                                                style="font-size: 1rem; font-weight: bold; margin: 0; font-style: normal; font-family: 'Pacifico', cursive; color: #333; text-align: center;">
+                                                Dominio
+                                            </h3>
+                                        </li>
+                                        <li
+                                            style=" font-size: 1.2rem; font-style: normal; font-family: 'Times New Roman', Times, serif; text-align: center; ">
+                                            {{listaContenido.dominio}}</li>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="contenedor-opciones">
+                                <ul>
+                                    <li>
+                                        <h3
+                                            style="font-size: 1rem; font-weight: bold; margin: 0; font-style: normal; font-family: 'Pacifico', cursive; color: #333; text-align: center;">
+                                            Opciones
+                                        </h3>
+                                    </li>
+                                    <li><a href="#" class="btn-pri" title="Ver detalles"><i
+                                                class="fa-solid fa-eye"></i></a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                {% endfor %}
+                <div class="contenido-boton">
+                    <div class="card">
+                        <div class="opciones">
+                            <a href="{% url 'listado_categoria_p' slug=slug slug2=slug2 %}" class="btn">Atras</a>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <div class="opciones">
+                            <a href="{% url 'detalle_de_categoria_c' slug=slug slug2=slug2 %}" class="btn">Detalle categoría</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            {% else %}
+            <!-- Mostrar el mensaje de que no existen valores -->
+            <div>
+                <p
+                    style="font-size: 1rem; font-weight: bold; margin: 0; font-style: normal; font-family: 'Pacifico', cursive; color: #333; text-align: center;">
+                    No hay valores disponibles de categoría</p>
+            </div>
+            {% endif %}
+            {% endblock %}
+            <!-- SECCION DEL CONTENIDO CENTRAL-->
+        </section>
+    </div>
+    <!-- SECCION FOOTER -->
+    {% include 'partials/footer_home.html'%}
+    <!-- SECCION FOOTER -->
+
+    <!-- Incluye la biblioteca de Bootstrap y otros scripts -->
+
+</body>
+
+</html>

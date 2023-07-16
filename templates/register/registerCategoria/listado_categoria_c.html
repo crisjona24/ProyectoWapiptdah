@@ -1,0 +1,167 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta content="width=device-width, initial-scale=1" name="viewport">
+    <title>
+        Home | Usuario Técnico
+    </title>
+    <link href="https://fonts.googleapis.com/css2?family=Oswald&display=swap" rel="stylesheet">
+    <!-- Iconos-->
+    <script crossorigin="anonymous" src="https://kit.fontawesome.com/cb1bb46b82.js"> </script>
+    <!--Estilos personales-->
+    <link rel="stylesheet" href="{% static 'css/estilos_general/listado_categoria.css' %}" />
+    <link rel="stylesheet" href="{% static 'css/estilos_general/listado_TDAH.css' %}">
+    <link rel="stylesheet" href="{% static 'css/estilos_general/listado_reporte.css' %}">
+
+</head>
+
+<body>
+    <!-- SECCION DEL CABECERA-->
+    {% include 'partials/home_comun/cabecera_home_c.html'%}
+    <!-- SECCION DEL CABECERA-->
+
+    <div class="row">
+
+        <!-- SECCION DEL NAVBAR-->
+        {% include 'partials/home_comun/sidebar_home_c.html'%}
+        <!-- SECCION DEL NAVBAR-->
+
+        <section style="background-color: #D9DBF1;">
+            <!-- SECCION DEL CONTENIDO CENTRAL-->
+            {% block content %}
+            <div>
+                <span class="span">{{usuario}} esta en modo: Común</span>
+            </div>
+            {% if categoria %}
+            <div class="contenido-categoria">
+                <div class="contenido-categoria-opciones">
+                    <div class="opcion_1">
+                        <div class="card">
+                            <div class="opciones">
+                                <h3>Grado: {{ nivel }}</h3>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="opcion_2">
+                        <div class="card">
+                            <div class="opciones">
+                                <a href="#" class="btn-pri">Agregar</a>
+                            </div>
+                        </div>
+                        <div class="card">
+                            <div class="opciones">
+                                <a href="{% url 'listado_nivel_TDAH_c' slug=slug %}" class="btn">Cancelar</a>
+                            </div>
+                        </div>
+                        <div class="card">
+                            <div class="opciones">
+                                <a href="{% url 'detalle_de_nivel' slug=slug slug2=slug2 %}" class="btn-pri">Detalle nivel</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                {% for listaCategoria in categoria %}
+                <div class="contenido">
+                    <br>
+                    <div class="contenedor-listado">
+                        <div class="contenedor-nombre">
+                            <li style="list-style: none;">
+                                <h6>Categoria: {{listaCategoria.nombre_categoria}}</h6>
+                            </li>
+                        </div>
+                        <div class="contenedor">
+                            <div class="contenedor-datos">
+                                <div class="card">
+                                    <div class="textos">
+                                        <img src="{% static 'img/icon.png' %}" style="width: 70px; height: 100px; margin-left: 20px;">
+                                    </div>
+                                </div>
+                                <div class="card">
+                                    <div class="textos">
+                                        <li>
+                                            <h3
+                                                style="font-size: 1rem; font-weight: bold; margin: 0; font-style: normal; font-family: 'Pacifico', cursive; color: #333; text-align: center;">
+                                                Nombre
+                                            </h3>
+                                        </li>
+                                        <li
+                                            style=" font-size: 1.2rem; font-style: normal; font-family: 'Times New Roman', Times, serif; text-align: center; ">
+                                            {{listaCategoria.nombre_categoria}}</li>
+                                    </div>
+                                </div>
+                                <div class="card">
+                                    <div class="textos">
+                                        <li>
+                                            <h3
+                                                style="font-size: 1rem; font-weight: bold; margin: 0; font-style: normal; font-family: 'Pacifico', cursive; color: #333; text-align: center;">
+                                                N° Test
+                                            </h3>
+                                        </li>
+                                        <li
+                                            style=" font-size: 1.2rem; font-style: normal; font-family: 'Times New Roman', Times, serif; text-align: center; ">
+                                            {{listaCategoria.num_test}}</li>
+                                    </div>
+                                </div>
+                                <div class="card">
+                                    <div class="textos">
+                                        <li>
+                                            <h3
+                                                style="font-size: 1rem; font-weight: bold; margin: 0; font-style: normal; font-family: 'Pacifico', cursive; color: #333; text-align: center;">
+                                                Dificultad
+                                            </h3>
+                                        </li>
+                                        <li
+                                            style=" font-size: 1.2rem; font-style: normal; font-family: 'Times New Roman', Times, serif; text-align: center; ">
+                                            {{listaCategoria.grado_dificultad}}</li>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="contenedor-opciones">
+                                <ul>
+                                    <li>
+                                        <h3
+                                            style="font-size: 1rem; font-weight: bold; margin: 0; font-style: normal; font-family: 'Pacifico', cursive; color: #333; text-align: center;">
+                                            Opciones
+                                        </h3>
+                                    </li>
+                                    <li><a href="{% url 'listado_contenido_c' slug=slug slug2=listaCategoria.slug_categoria %}" class="btn-pri" title="Ver contenido"><i
+                                                class="fa-solid fa-eye"></i></a></li>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                {% endfor %}
+                <div class="contenido-boton">
+                    <div class="card">
+                        <div class="opciones">
+                            <a href="{% url 'listado_nivel_TDAH_c' slug=slug %}" class="btn">Atras</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            {% else %}
+            <!-- Mostrar el mensaje de que no existen valores -->
+            <div style="padding: 0; margin: 0;">
+                <p
+                    style="font-size: 1rem; font-weight: bold; margin: 0; font-style: normal; font-family: 'Pacifico', cursive; color: #333; text-align: center;">
+                    No hay valores disponibles de categoría</p>
+            </div>
+            {% endif %}
+            {% endblock %}
+            <!-- SECCION DEL CONTENIDO CENTRAL-->
+        </section>
+    </div>
+    <!-- SECCION FOOTER -->
+    {% include 'partials/footer_home.html'%}
+    <!-- SECCION FOOTER -->
+
+    <!-- Incluye la biblioteca de Bootstrap y otros scripts -->
+
+</body>
+
+</html>

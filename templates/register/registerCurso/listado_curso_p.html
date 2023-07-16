@@ -1,0 +1,132 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta content="width=device-width, initial-scale=1" name="viewport">
+    <title>
+        Home | Usuario Común
+    </title>
+    <link href="https://fonts.googleapis.com/css2?family=Oswald&display=swap" rel="stylesheet">
+    <!-- Iconos-->
+    <script crossorigin="anonymous" src="https://kit.fontawesome.com/cb1bb46b82.js"> </script>
+    <!--Estilos personales-->
+    <link rel="stylesheet" href="{% static 'css/estilos_general/listado_curso_valido.css' %}">
+    <link rel="stylesheet" href="{% static 'css/estilos_general/listado_nivelP_valido.css' %}">
+
+</head>
+
+<body>
+    <!-- SECCION DEL CABECERA-->
+    {% include 'partials/home_paciente/cabecera_home.html'%}
+    <!-- SECCION DEL CABECERA-->
+
+    <div class="row">
+
+        <!-- SECCION DEL NAVBAR-->
+        {% include 'partials/home_paciente/sidebar_home.html'%}
+        <!-- SECCION DEL NAVBAR-->
+
+        <section id="mysection" style="background-color: #D9DBF1;">
+            {% block content%}
+            <div>
+                <span class="span">{{usuario}} esta en modo: Paciente</span>
+            </div>
+            <!-- SECCION DEL CONTENIDO CENTRAL-->
+            {% if curso %}
+            {% for listaCurso in curso %}
+            <br>
+            <div class="contenedor-listado">
+                <div class="contenedor-nombre">
+                    <li style="list-style: none;">
+                        <h6>Curso</h6>
+                    </li>
+                </div>
+                <div class="contenedor">
+                    <div class="contenedor-datos">
+                        <div class="card">
+                            <div class="textos">
+                                <img src="{% static 'img/icon.png' %}"
+                                    style="width: 70px; height: 100px; margin-left: 20px;">
+                            </div>
+                        </div>
+                        <div class="card">
+                            <div class="textos">
+                                <li>
+                                    <h3
+                                        style="font-size: 1rem; font-weight: bold; margin: 0; font-style: normal; font-family: 'Pacifico', cursive; color: #333; text-align: center;">
+                                        Nombre
+                                    </h3>
+                                </li>
+                                <li
+                                    style=" font-size: 1.2rem; font-style: normal; font-family: 'Times New Roman', Times, serif; text-align: center; ">
+                                    {{listaCurso.nombre_curso}}</li>
+                            </div>
+                        </div>
+                        <div class="card">
+                            <div class="textos">
+                                <li>
+                                    <h3
+                                        style="font-size: 1rem; font-weight: bold; margin: 0; font-style: normal; font-family: 'Pacifico', cursive; color: #333; text-align: center;">
+                                        Descripción
+                                    </h3>
+                                </li>
+                                <li
+                                    style=" font-size: 1.2rem; font-style: normal; font-family: 'Times New Roman', Times, serif; text-align: center; ">
+                                    {{listaCurso.descripcion_curso}}</li>
+                            </div>
+                        </div>
+                        <div class="card">
+                            <div class="textos">
+                                <li>
+                                    <h3
+                                        style="font-size: 1rem; font-weight: bold; margin: 0; font-style: normal; font-family: 'Pacifico', cursive; color: #333; text-align: center;">
+                                        Estado
+                                    </h3>
+                                </li>
+                                <li
+                                    style=" font-size: 1.2rem; font-style: normal; font-family: 'Times New Roman', Times, serif; text-align: center; ">
+                                    {{listaCurso.estado_curso}}</li>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="contenedor-opciones">
+                        <ul>
+                            <li>
+                                <h3
+                                    style="font-size: 1rem; font-weight: bold; margin: 0; font-style: normal; font-family: 'Pacifico', cursive; color: #333; text-align: center;">
+                                    Opciones
+                                </h3>
+                            </li>
+                            <li><a href="{% url 'registro_en_curso' slug=slug slug2=listaCurso.slug_curso %}"
+                                    class="btn-pri" title="Registrarse"><i class="fa-sharp fa-solid fa-plus"></i></a>
+                            </li>
+                            <li><a href="{% url 'detalle_de_curso' slug=slug slug2=listaCurso.slug_curso %}"
+                                    class="btn-pri" title="Información"><i class="fa-solid fa-eye"></i></a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+            {% else %}
+            <!-- Mostrar el mensaje de que no existen valores -->
+            <div style="padding: 0; margin: 0;">
+                <p style="font-size: 1rem; font-weight: bold; margin: 0; font-style: normal; 
+                font-family: 'Pacifico', cursive; color: #333; text-align: center;">
+                    No hay cursos registrados !!!/p>
+            </div>
+            {% endif %}
+            {% endblock %}
+        </section>
+    </div>
+    <!-- SECCION FOOTER -->
+    {% include 'partials/footer_home.html'%}
+    <!-- SECCION FOOTER -->
+
+    <!-- Incluye la biblioteca de Bootstrap y otros scripts -->
+
+</body>
+
+</html>

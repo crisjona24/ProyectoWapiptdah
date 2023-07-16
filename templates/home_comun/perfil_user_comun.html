@@ -1,0 +1,102 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Perfil | Usuario Común</title>
+    <!--Fuentes-->
+    <link href="https://fonts.googleapis.com/css2?family=Oswald&display=swap" rel="stylesheet">
+    <!-- Iconos-->
+    <script crossorigin="anonymous" src="https://kit.fontawesome.com/cb1bb46b82.js"> </script>
+    <!--Estilos personales-->
+    <link rel="stylesheet" href="{% static 'css/estilos_partials/perfil.css' %}" />
+    <!-- INCORPORACIONES PARA LAS ALERTAS Y LOS ESTILOS DE TABLAS-->
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.4.4/dist/sweetalert2.all.min.js"></script>
+</head>
+
+<body>
+    <!-- SECCION DEL CABECERA-->
+    {% include 'partials/home_comun/cabecera_home_c.html'%}
+    <!-- SECCION DEL CABECERA-->
+
+    <div class="row">
+        <!-- SECCION DEL NAVBAR-->
+        {% include 'partials/home_comun/sidebar_home_c.html' %}
+        <!-- SECCION DEL NAVBAR-->
+
+        <section style="background-color: #D9DBF1;">
+            <!-- SECCION DEL CONTENIDO CENTRAL-->
+            {% block content%}
+            <div class="centrado">
+                <div class="contenedor-perfil">
+                    <div class="contenedor-foto">
+                        <img src="{% static 'img/facebook.png' %}" alt="" />
+                    </div>
+                    <div class="contenedor-username">
+                        <li>
+                            <h6>{{ user_comun.nombre }}</h6>
+                        </li>
+                    </div>
+                    <div class="contenedor-username">
+                        <li>
+                            <label style="font-size: 0.8rem;">{{ user_comun.correo_electronico }}</label>
+                        </li>
+                    </div>
+                    <div class="contenedor-opciones">
+                        <div class="card">
+                            <div class="opciones">
+                                <a href="#" title="Compartir" class="boton-opciones">Compartir</a>
+                            </div>
+                        </div>
+                        <div class="card">
+                            <div class="opciones">
+                                <a onclick="return editar_perfil_comun()" title="Editar perfil"
+                                    class="boton-opciones">Editar</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="contenedor-datos">
+                        <div class="card_datos">
+                            <div class="opciones_datos">
+                                <ul>
+                                    <li class="dato">Nombre: {{ user_comun.nombre }}</li>
+                                    <li class="dato">Apellido: {{ user_comun.apellido }}</li>
+                                    <li class="dato">Correo: {{ user_comun.correo_electronico }}</li>
+                                    <li class="dato">Celular: {{ user_comun.numero_celular }}</li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="card_datos">
+                            <div class="opciones_datos">
+                                <ul>
+                                    <li class="dato">Area: {{ user_comun.area_estudio }}</li>
+                                    <li class="dato">Genero:  {{ user_comun.genero }}</li>
+                                    <li class="dato">Usuario: {{ user_comun.username }}</li>
+                                    <li class="dato">Fecha Nacimiento: {{ user_comun.fecha_nacimiento }}</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="boton">
+                        <a onclick="return validar_eliminacion_comun()" title="Eliminar perfil"
+                            class="boton-opciones">Eliminar</a>
+                    </div>
+                </div>
+            </div>
+            {% endblock %}
+            <!-- SECCION DEL CONTENIDO CENTRAL-->
+        </section>
+    </div>
+    <input type="hidden" id="slug" name="slug" value="{{ slug }}">
+    <!-- SECCION FOOTER -->
+    {% include 'partials/footer_home.html'%}
+    <!-- SECCION FOOTER -->
+
+    <!-- Incluye la biblioteca de Bootstrap y otros scripts -->
+    <script src="{% static 'js/controler_user/validate_campos_perfil.js' %}"></script>
+
+</body>
+
+</html>

@@ -1,0 +1,33 @@
+#cuerpo{
+    background-color: #F2F2F2;
+    font-family: monospace;
+    padding: 0;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box; 
+    /**interesante*/
+    position: relative;
+    padding-bottom: 8em;
+    min-height: 100vh;
+}
+#barraSup{
+    background-color: #0C2342;
+    color: white;
+    border-color: black;
+}
+
+.nuevo {
+    text-align: right;
+    color: black;
+    font-size: 15px;
+}
+
+.nuevo1 {
+    align-items: right;
+    margin-right: 4%;
+}
+
+#divnuevo {
+    display: flex;
+    columns: 3;
+}

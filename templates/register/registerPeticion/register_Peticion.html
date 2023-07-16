@@ -1,0 +1,64 @@
+{% load static %} {% include 'partials/home_comun/superiorRegister_comun.html'%}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="{% static 'css/estilos_register/nuevo.css' %}" />
+    <!-- INCORPORACIONES PARA LAS ALERTAS Y LOS ESTILOS DE TABLAS-->
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.4.4/dist/sweetalert2.all.min.js"></script>
+    <title>Registro | Petición </title>
+</head>
+
+{% block content %}
+
+<body>
+    <div class="container">
+        <div class="container barraSup row">
+            <div class="card-body col-md-7">
+                <h4>Registro de Petición</h4>
+            </div>
+            <div class="card-body col-md-1">
+                <a href="{% url 'listado_peticiones_c' slug=slug %}" class="btn btn-danger">Cancelar</a>
+            </div>
+        </div>
+        <div class="container card card-body" style="border-color: black;">
+            <h6 style="padding: 0px 15px 15px 15px; padding-left: 0px;">Ingrese los datos solicitados</h6>
+            {% if error %}
+            <span id="error-span">{{ error }}</span>
+            {% endif %}
+            <form action="{% url 'guardar_de_peticion' slug=slug %}" method="POST">
+                {% csrf_token %}
+                <!-- Campos del formulario -->
+                <div class="form-group">
+                    <label for="motivo">Motivo de petición:</label>
+                    <textarea onclick="info()" style="height: 150px; width: 100%; max-width: 500px;" id="motivo" name="motivo" placeholder="Ingresa el motivo de la petición**"
+                    autofocus></textarea>
+                </div>
+                <div class="form-group">
+                    <label for="peticion">Petición:</label>
+                    <input type="text" id="peticion" name="peticion" placeholder="Ingresa la petición**"/>
+                </div>
+                <div class="form-group">
+                    <label for="tipo">Tipo de petición</label>
+                    <select id="tipo" name="tipo">
+                        <option value="none">None</option>
+                        <option value="Eliminacion">Eliminación</option>
+                        <option value="Agregacion">Agregación</option>
+                        <option value="Modificacion">Modificación</option>
+                    </select>
+                </div>
+                <input type="hidden" id="slug" name="slug" value="{{ slug }}">
+                <!-- Otros campos del formulario -->
+                <button onclick=" return enviar()" type="submit">Enviar</button>
+            </form>
+        </div>
+    </div>
+    <script src="{% static 'js/controlerCampusRegister/validar_campos_peticion.js' %}"></script>
+
+</body>
+{% endblock content %}
+
+{% include 'partials/parteFinal.html'%}

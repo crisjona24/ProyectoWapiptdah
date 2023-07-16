@@ -1,0 +1,66 @@
+{% load static %} {% include 'partials/home_tecnico/superiorRegister_tecnico.html'%}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- INCORPORACIONES PARA LAS ALERTAS Y LOS ESTILOS DE TABLAS-->
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.4.4/dist/sweetalert2.all.min.js"></script>
+    <link rel="stylesheet" href="{% static 'css/estilos_register/nuevo.css' %}" />
+    <title>Edición | Categoría </title>
+</head>
+
+{% block content %}
+
+<body>
+    <div class="container">
+        <div class="container barraSup row">
+            <div class="card-body col-md-7">
+                <h4>Actualizar datos de categoría</h4>
+            </div>
+            <div class="card-body col-md-1">
+                <a href="{% url 'listado_categoria_t' slug=slug %}" class="btn btn-danger">Cancelar</a>
+            </div>
+        </div>
+        <div class="container card card-body" style="border-color: black;">
+            <h6>Ingrese los datos solicitados</h6>
+            {% if error %}
+            <span id="error-span">{{ error }}</span>
+            {% endif %}
+            <form action="{% url 'editar_categoria' slug=slug %}" method="POST">
+                {% csrf_token %}
+                <!-- Campos del formulario -->
+                <div class="form-group">
+                    <label for="nombre">Nombre de categoría:</label>
+                    <input type="text" id="nombre" name="nombre" placeholder="Ingresa el nombre**" value="{{ categoria.nombre }}" autofocus />
+                </div>
+                <div class="form-group">
+                    <label for="descripcion">Descripción:</label>
+                    <input onclick="info()" type="text" id="descripcion" name="descripcion" placeholder="Ingresa una corta descripción*" value="{{ categoria.descripcion }}" />
+                </div>
+                <div class="form-group">
+                    <label for="numtes">Número de test:</label>
+                    <input type="number" id="numtes" name="numtes" placeholder="Número de categorías**" value="{{ categoria.numtes }}" />
+                </div>
+                <div class="form-group">
+                    <label for="grado">Grado de dificultad:</label>
+                    <select id="grado" name="grado">
+                        <option value="none" {% if categoria.grado == 'none' %}selected{% endif %}>None</option>
+                        <option value="Bajo" {% if categoria.grado == 'Bajo' %}selected{% endif %}>Bajo</option>
+                        <option value="Medio" {% if categoria.grado == 'Medio' %}selected{% endif %}>Medio</option>
+                        <option value="Alto" {% if categoria.grado == 'Alto' %}selected{% endif %}>Alto</option>
+                    </select>
+                </div>
+                <!-- Otros campos del formulario -->
+                <button onclick=" return enviar()" type="submit">Actualizar</button>
+            </form>
+        </div>
+    </div>
+    <script src="{% static 'js/controlerCampusRegister/validar_campos_categoria.js' %}"></script>
+
+</body>
+{% endblock content %}
+
+{% include 'partials/parteFinal.html'%}

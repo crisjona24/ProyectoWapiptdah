@@ -1,0 +1,54 @@
+{% load static %} {% include 'partials/home_comun/superiorRegister_comun.html'%}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="{% static 'css/estilos_register/nuevo.css' %}" />
+    <!-- INCORPORACIONES PARA LAS ALERTAS Y LOS ESTILOS DE TABLAS-->
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.4.4/dist/sweetalert2.all.min.js"></script>
+    <title>Registro | Reportes </title>
+</head>
+
+{% block content %}
+
+<body>
+    <div class="container">
+        <div class="container barraSup row">
+            <div class="card-body col-md-7">
+                <h4>Registro de Reportes</h4>
+            </div>
+            <div class="card-body col-md-1">
+                <a href="{% 'listado_contenido_c' slug=slug2 %}" class="btn btn-danger">Cancelar</a>
+            </div>
+        </div>
+        <div class="container card card-body" style="border-color: black;">
+            <h6 style="padding: 0px 15px 15px 15px; padding-left: 0px;">Ingrese los datos solicitados</h6>
+            {% if error %}
+            <span id="error-span">{{ error }}</span>
+            {% endif %}
+            <form action="{% url 'guardar_de_reportes' slug1=slug1 slug2=slug2 %}" method="POST">
+                {% csrf_token %}
+                <!-- Campos del formulario -->
+                <div class="form-group">
+                    <label for="titulo">Título:</label>
+                    <input type="text" id="titulo" name="titulo" placeholder="Ingresa un título**" autofocus />
+                </div>
+                <div class="form-group">
+                    <label for="descripcion">Descripción:</label>
+                    <textarea style="height: 150px; width: 100%; max-width: 500px;" id="descripcion" name="descripcion" placeholder="Ingresa la descripción**"></textarea>
+                </div>
+                <input type="hidden" id="slug" name="slug" value="{{ slug }}">
+                <!-- Otros campos del formulario -->
+                <button onclick=" return enviar()" type="submit">Enviar</button>
+            </form>
+        </div>
+    </div>
+    <script src="{% static 'js/controlerCampusRegister/validar_campos_reportes.js' %}"></script>
+
+</body>
+{% endblock content %}
+
+{% include 'partials/parteFinal.html'%}

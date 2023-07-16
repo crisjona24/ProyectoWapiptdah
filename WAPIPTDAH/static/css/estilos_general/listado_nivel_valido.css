@@ -1,0 +1,167 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400&display=swap");
+
+.btn-pri {
+    display: inline-block;
+    border: none;
+    border-radius: 4px;
+    padding: 8px 16px;
+    font-size: 14px;
+    text-align: center;
+    text-decoration: none;
+    background-color: rgb(2, 70, 148);
+    color: #fff;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.btn-pri:hover {
+    background-color: rgb(2, 70, 148);
+}
+
+/*El span*/
+.span {
+    font-weight: bold;
+    margin-right: 10px;
+    font-family: 'Pacifico', cursive;
+}
+
+/*El span*/
+
+.contenedor-listado {
+    background-color: #fff;
+    border-radius: 10px;
+    width: 80%;
+    max-width: 80%;
+    margin: auto;
+    padding: 40px 0;
+    border: 2px solid #333;
+    padding: 5px;
+
+    display: grid;
+    grid-template-columns: 4fr;
+}
+
+.contenedor {
+    display: grid;
+    grid-template-columns: 3fr 1fr;
+}
+
+.contenedor-datos {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+}
+
+.card {
+    min-height: 50px;
+    padding: 20px;
+    position: relative;
+    overflow: hidden;
+}
+
+.card .textos {
+    height: 100%;
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.contenedor-opciones {
+    height: 100%;
+    padding: 20px;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.contenedor-opciones li {
+    list-style: none;
+    margin: 5px;
+}
+
+.contenedor-nombre {
+    text-align: start;
+    padding-left: 25px;
+    display: grid;
+    grid-template-columns: repeat(1, 4fr);
+}
+
+.contenedor-nombre-2 {
+    text-align: start;
+    padding-left: 25px;
+    display: grid;
+    grid-template-columns: repeat(1, 3fr);
+}
+
+.contenedor-reporte {
+    background-color: #fff;
+    border-radius: 10px;
+    width: 80%;
+    max-width: 80%;
+    margin: auto;
+    padding: 40px 0;
+    display: grid;
+    grid-template-columns: 3fr 1fr;
+}
+
+.contenedor-datos-reporte {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+}
+
+.contenedor-nombre h6 {
+    padding-top: 15px;
+    font-family: "Pacifico", cursive;
+    font-weight: bold;
+    font-size: 13px;
+}
+
+.contenedor-nombre-2 h6 {
+    padding-top: 15px;
+    font-family: "Pacifico", cursive;
+    font-weight: bold;
+    font-size: 13px;
+}
+
+@media (max-width: 768px) {
+    /* Otros estilos... */
+
+    .contenedor-username h6 {
+        /* Otros estilos... */
+        font-size: 1.2rem;
+        /* Ejemplo de tamaño de fuente relativo */
+    }
+}
+
+@media (max-width: 768px) {
+    /* Otros estilos... */
+
+    .textos h3 {
+        /* Otros estilos... */
+        font-size: 0.7rem;
+        /* Ejemplo de tamaño de fuente relativo */
+    }
+
+    .textos li {
+        /* Otros estilos... */
+        font-size: 0.8rem;
+        /* Ejemplo de tamaño de fuente relativo */
+    }
+}
+
+@media (max-width: 480px) {
+    /* Otros estilos... */
+
+    .textos h3 {
+        /* Otros estilos... */
+        font-size: 0.5rem;
+        /* Ejemplo de tamaño de fuente relativo */
+    }
+
+    .textos li {
+        /* Otros estilos... */
+        font-size: 0.6rem;
+        /* Ejemplo de tamaño de fuente relativo */
+    }
+}

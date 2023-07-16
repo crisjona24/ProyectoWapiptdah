@@ -1,0 +1,113 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta content="width=device-width, initial-scale=1" name="viewport">
+    <link href="https://fonts.googleapis.com/css2?family=Oswald&display=swap" rel="stylesheet">
+    <!-- Iconos-->
+    <script crossorigin="anonymous" src="https://kit.fontawesome.com/cb1bb46b82.js"> </script>
+    <!--Estilos personales-->
+    <link rel="stylesheet" href="{% static 'css/estilos_home/sidebarPaciente.css' %}">
+</head>
+
+<body>
+    <aside style="background-color: #fff;">
+        <!-- SECCION DEL NAVBAR-->
+        <nav class="nav">
+            <ul class="list">
+                <li class="list__item">
+                    <div class="list__button">
+                        <img src="{% static 'assets/dashboard.svg' %}" class="list__img">
+                        <a href="{% url 'listado_nivel_TDAH_c' slug=slug %}" class="nav__link">Inicio</a>
+                    </div>
+                </li>
+
+                <li class="list__item">
+                    <div class="list__button">
+                        <img src="{% static 'assets/perfil.svg' %}" class="list__img">
+                        <a href="{% url 'profile_comun' slug=slug %}" class="nav__link">Perfil</a>
+                    </div>
+                </li>
+
+                <li class="list__item">
+                    <div class="list__button">
+                        <img src="{% static 'assets/actividad.svg' %}" class="list__img">
+                        <a href="{% url 'listado_peticiones_c' slug=slug %}" class="nav__link">Peticiones</a>
+                    </div>
+                </li>
+
+                <li class="list__item">
+                    <div class="list__button">
+                        <img src="{% static 'assets/message.svg' %}" class="list__img">
+                        <a href="#" class="nav__link">Mensajes</a>
+                    </div>
+                </li>
+
+                <li class="list__item list__item--click">
+                    <div class="list__button list__button--click">
+                        <img src="{% static 'assets/docs.svg' %}" class="list__img">
+                        <a class="nav__link">Cursos</a>
+                        <img src="{% static 'assets/arrow.svg' %}" class="list__arrow">
+                    </div>
+
+                    <ul class="list__show">
+                        <li class="list__inside">
+                            <a href="{% url 'registrar_de_Curso' slug=slug %}"
+                                class="nav__link nav__link--inside">Agregar</a>
+                        </li>
+
+                        <li class="list__inside">
+                            <a href="{% url 'listado_curso_c' slug=slug %}"
+                                class="nav__link nav__link--inside">Listado</a>
+                        </li>
+                    </ul>
+                </li>
+
+                <li class="list__item list__item--click">
+                    <div class="list__button list__button--click">
+                        <img src="{% static 'assets/users.svg' %}" class="list__img">
+                        <a href="#" class="nav__link">Paciente</a>
+                        <img src="{% static 'assets/arrow.svg' %}" class="list__arrow">
+                    </div>
+
+                    <ul class="list__show">
+                        <li class="list__inside">
+                            <a href="{% url 'lista_de_pacientes_c' slug=slug %}"
+                                class="nav__link nav__link--inside">Listado</a>
+                        </li>
+                        <li class="list__inside">
+                            <a href="#" class="nav__link nav__link--inside">Reportes</a>
+                        </li>
+                    </ul>
+                </li>
+                <li class="list__item list__item--click">
+                    <div class="list__button list__button--click">
+                        <img src="{% static 'assets/users.svg' %}" class="list__img">
+                        <a href="#" class="nav__link">Opciones</a>
+                        <img src="{% static 'assets/arrow.svg' %}" class="list__arrow">
+                    </div>
+
+                    <ul class="list__show">
+                        <li class="list__inside">
+                            <a href="{% url 'listado_sala_c' slug=slug %}"
+                                class="nav__link nav__link--inside">Salas creadas</a>
+                        </li>
+                        <li class="list__inside">
+                            <a href="/" class="nav__link nav__link--inside">Salir</a>
+                        </li>
+                    </ul>
+                </li>
+
+            </ul>
+        </nav>
+        <!-- SECCION DEL NAVBAR-->
+    </aside>
+
+    <!-- Incluye la biblioteca de Bootstrap y otros scripts -->
+    <script src="{% static 'js/controler_home/home_paciente.js' %}"></script>
+
+</body>
+
+</html>
